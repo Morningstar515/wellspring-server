@@ -490,7 +490,6 @@ app.use('/updateprescription/', verifyToken.verifyToken, (req, res) => {
 // #region Deletes
 // Delete existing user
 app.use('/deleteuser/', (req, res) => {
-app.use('/deleteuser/', (req, res) => {
   jwt.verify(req.token, "secretkey", async (err, authData) => {
     if (err) {
       res.status(403).json({ message: "Access Denied" }); // 403 'Forbidden'
@@ -498,8 +497,7 @@ app.use('/deleteuser/', (req, res) => {
       try {
         await sql.connect(sqlConfig);
         const result = await sql.query`DELETE FROM dbo.Users
-          WHERE dbo.Users.id = '${req.body.id}'`;
-          WHERE dbo.Users.id = '${req.body.id}'`;
+          'WHERE dbo.Users.id = '${req.body.id}'`;
         if (result.rowsAffected = 1) {
           res.status(200).json({ message: "Success!" });
         }
@@ -509,9 +507,11 @@ app.use('/deleteuser/', (req, res) => {
     }
   });
 });
+
+
 // Delete existing patient
 app.use('/deletepatient/', (req, res) => {
-app.use('/deletepatient/', (req, res) => {
+
   jwt.verify(req.token, "secretkey", async (err, authData) => {
     if (err) {
       res.status(403).send({ message: "Access Denied" }); // 403 'Forbidden'
@@ -520,16 +520,16 @@ app.use('/deletepatient/', (req, res) => {
         await sql.connect(sqlConfig);
         const result = await sql.query`DELETE FROM dbo.Patient
           WHERE dbo.Patient.id = '${req.body.id}'`;
-          WHERE dbo.Patient.id = '${req.body.id}'`;
         res.status(200).send({ message: "success" });
       } catch (err) {
         res.status(500).send({ message: err });
       }
     }
-  });
+  })
 });
+
+
 // Delete existing appointment
-app.use('/deleteappointment/', (req, res) => {
 app.use('/deleteappointment/', (req, res) => {
   jwt.verify(req.token, "secretkey", async (err, authData) => {
     if (err) {
@@ -539,15 +539,14 @@ app.use('/deleteappointment/', (req, res) => {
         await sql.connect(sqlConfig);
         const result = await sql.query`DELETE FROM dbo.Appointment
           WHERE dbo.Appointment.id = '${req.body.id}`;
-          WHERE dbo.Appointment.id = '${req.body.id}`;
       } catch (err) {
         res.send(500, err);
       }
     }
   });
 });
+
 // Delete existing message
-app.use('/deletemessage/', (req, res) => {
 app.use('/deletemessage/', (req, res) => {
   jwt.verify(req.token, "secretkey", async (err, authData) => {
     if (err) {
@@ -557,15 +556,14 @@ app.use('/deletemessage/', (req, res) => {
         await sql.connect(sqlConfig);
         const result = await sql.query`DELETE FROM dbo.Message
           WHERE dbo.Message.id = '${req.body.id}'`;
-          WHERE dbo.Message.id = '${req.body.id}'`;
       } catch (err) {
         res.send(500, err);
       }
     }
   });
 });
+
 // Delete existing lab
-app.use('/deletelab/', (req, res) => {
 app.use('/deletelab/', (req, res) => {
   jwt.verify(req.token, "secretkey", async (err, authData) => {
     if (err) {
@@ -575,15 +573,14 @@ app.use('/deletelab/', (req, res) => {
         await sql.connect(sqlConfig);
         const result = await sql.query`DELETE FROM dbo.Lab
           WHERE dbo.Lab.id = '${req.body.id}'`;
-          WHERE dbo.Lab.id = '${req.body.id}'`;
       } catch (err) {
         res.send(500, err);
       }
     }
   });
 });
+
 // Delete existing prescription
-app.use('/deleteprescription/', (req, res) => {
 app.use('/deleteprescription/', (req, res) => {
   jwt.verify(req.token, "secretkey", async (err, authData) => {
     if (err) {
