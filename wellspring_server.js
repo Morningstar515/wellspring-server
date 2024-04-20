@@ -12,7 +12,6 @@ const bcrypt = require("bcrypt") // Hashing library for Auth
 const saltRounds = 10 // Salt config for BCrypt
 // MSSQL and its config
 const sql = require('mssql');
-const data = require("./sqluser.json");
 const e = require('express');
 const { verify } = require('crypto');
 const sqlConfig = {
