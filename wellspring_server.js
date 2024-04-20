@@ -16,14 +16,14 @@ const data = require("./sqluser.json");
 const e = require('express');
 const { verify } = require('crypto');
 const sqlConfig = {
-  user: data[0].user,
-  // user: "app",
-  password: data[0].password,
-  // password: "Pfc123!",
-  database: data[0].database,
-  // database: "testing",
-  server: data[0].server,
-  // server: "localhost",
+  // user: data[0].user,
+  user: "app",
+  // password: data[0].password,
+  password: "Pfc123!",
+  // database: data[0].database,
+   database: "testing",
+  // server: data[0].server,
+   server: "localhost",
   pool: {
     max: 10,
     min: 0,
