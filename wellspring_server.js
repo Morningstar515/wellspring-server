@@ -84,7 +84,7 @@ app.use('/login', async (req, res) => {
       res.status(401).json({ message: 'User does not exist' });
       return;
     }
-    if(password === dboPassword){
+    if(password === dboPassword.recordset[0].Password){
       valid = true
     }
     var email = dboPassword.recordset[0].Email;
