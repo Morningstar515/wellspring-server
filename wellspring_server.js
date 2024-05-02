@@ -623,7 +623,9 @@ app.use('/deleteprescription/', (req, res) => {
 
 // #region StartServer
 // #region StartServer
-http.createServer(app).listen(5174);
+http.createServer(app).listen(5174, () => {
+  console.log("server listening on port 5174")
+});
 
 // #endregion
 // #endregion
