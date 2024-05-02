@@ -235,7 +235,7 @@ app.use('/createuser', verifyToken.verifyToken, (req, res) => {
       try {
         await sql.connect(sqlConfig);
         var password = await bcrypt.hash(req.body.Password, saltRounds);
-        const result = await sql.query`insert into dbo.Users values(${req.body.Username},${password},${req.body.Email},${req.body.First_Name},${req.body.Surname},${req.body.Role})`;
+        const result = await sql.query`insert into dbo.Users values(${req.body.Username},${password},${req.body.Email},${req.body.FirstName},${req.body.LastName},${req.body.Role})`;
 
         if (result.rowsAffected = 1) {
           res.status(200).json({ message: "Success!" });
