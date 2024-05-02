@@ -16,13 +16,13 @@ const e = require('express');
 const { verify } = require('crypto');
 const sqlConfig = {
   // user: data[0].user,
-  user: "app",
+  user: "admin123",
   // password: data[0].password,
-  password: "Pfc123!",
+  password: "wellspring123!",
   // database: data[0].database,
-   database: "testing",
+   database: "wellspring",
   // server: data[0].server,
-   server: "localhost",
+   server: "wellspring-server.database.windows.net",
   pool: {
     max: 10,
     min: 0,
@@ -623,7 +623,6 @@ app.use('/deleteprescription/', (req, res) => {
 // #region StartServer
 // #region StartServer
 http.createServer(app).listen(5174);
-
 
 // #endregion
 // #endregion
