@@ -29,7 +29,7 @@ const sqlConfig = {
     idleTimeoutMillis: 3000
   },
   options: {
-    encrypt: false,
+    encrypt: true,
     trustServerCertificate: true // change to true for local dev / self-signed certs
   },
   port: 1433
@@ -230,7 +230,6 @@ app.use('/createuser', verifyToken.verifyToken, (req, res) => {
   console.log('here')
   jwt.verify(req.token, "secretkey", async (err, authData) => {
     if (err) {
-      console.log(err)
       res.status(403).json({ message: "Invalid User" }); // 403 'Forbidden' (invalid token)
     } else {
       try {
