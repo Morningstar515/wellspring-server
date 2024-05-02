@@ -84,7 +84,9 @@ app.use('/login', async (req, res) => {
       res.status(401).json({ message: 'User does not exist' });
       return;
     }
-    var valid = await bcrypt.compare(password, dboPassword.recordset[0].Password);
+    if(password === dboPassword){
+      valid = true
+    }
     var email = dboPassword.recordset[0].Email;
 
     if (valid === false) {
