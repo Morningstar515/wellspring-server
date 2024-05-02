@@ -222,17 +222,21 @@ app.use('/prescriptions', verifyToken.verifyToken, (req, res) => {
     }
   });
 });
-// #endregion
 
+// #endregion
 // #region Creates
 // Create a new user
 app.use('/createuser', verifyToken.verifyToken, (req, res) => {
-  console.log('here')
+  console.log(req)
+  console.log(res)
+
   jwt.verify(req.token, "secretkey", async (err, authData) => {
     if (err) {
+      console.log(err)
       res.status(403).json({ message: "Invalid User" }); // 403 'Forbidden' (invalid token)
     } else {
       try {
+
         await sql.connect(sqlConfig);
         var password = await bcrypt.hash(req.body.Password, saltRounds);
         const result = await sql.query`insert into dbo.Users values(${req.body.Username},${password},${req.body.Email},${req.body.FirstName},${req.body.LastName},${req.body.Role})`;
