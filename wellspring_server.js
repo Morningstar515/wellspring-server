@@ -624,19 +624,6 @@ app.use('/deleteprescription/', (req, res) => {
 // #region StartServer
 http.createServer(app).listen(5174);
 
-https.createServer({
-  key: fs.readFileSync('./ssl/privkey3.pem'),
-  cert: fs.readFileSync('./ssl/cert3.pem'),
-  // ca: certificateAuthority,
-  ciphers: [
-    "ECDHE-RSA-AES128-SHA256",
-    "DHE-RSA-AES128-SHA256",
-    "AES128-GCM-SHA256",
-    "RC4",
-    "HIGH",
-    "!MD5",
-    "!aNULL"
-  ].join(':'),
-}, app).listen(5175);
+
 // #endregion
 // #endregion
