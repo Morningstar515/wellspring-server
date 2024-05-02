@@ -22,7 +22,7 @@ const sqlConfig = {
   // database: data[0].database,
    database: "wellspring",
   // server: data[0].server,
-   server: "wellspring-server.database.windows.net:1433",
+   server: "wellspring-server.database.windows.net",
   pool: {
     max: 10,
     min: 0,
@@ -31,7 +31,8 @@ const sqlConfig = {
   options: {
     encrypt: false,
     trustServerCertificate: true // change to true for local dev / self-signed certs
-  }
+  },
+  port: 1433
 }
 // #endregion
 
