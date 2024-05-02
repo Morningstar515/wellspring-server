@@ -227,9 +227,7 @@ app.use('/prescriptions', verifyToken.verifyToken, (req, res) => {
 // #region Creates
 // Create a new user
 app.use('/createuser', verifyToken.verifyToken, (req, res) => {
-  console.log(req)
-  console.log(res)
-
+  console.log('here')
   jwt.verify(req.token, "secretkey", async (err, authData) => {
     if (err) {
       console.log(err)
