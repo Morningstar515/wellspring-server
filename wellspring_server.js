@@ -226,6 +226,7 @@ app.use('/prescriptions', verifyToken.verifyToken, (req, res) => {
 // #region Creates
 // Create a new user
 app.use('/createuser', verifyToken.verifyToken, (req, res) => {
+  console.log('here')
   jwt.verify(req.token, "secretkey", async (err, authData) => {
     if (err) {
       res.status(403).json({ message: "Invalid User" }); // 403 'Forbidden' (invalid token)
